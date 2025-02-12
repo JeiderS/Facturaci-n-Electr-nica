@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Vite App</title>
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            text-align: center;
+            
+        }
+        .container_buscador_factura {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px; /* Espacio entre elementos */
+            padding: 16px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .container_buscador_factura label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .container_buscador_factura input,
+        .container_buscador_factura select {
+            width: 100%;
+            padding: 15px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .container_buscador_factura button {
+            grid-column: span 2; /* El botón ocupa todo el ancho */
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            justify-self: center;
+        }
+        .container_buscador_factura button:hover {
+            background-color: #004494;
+        }
+        .container_table{
+            border: 3px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;  
+            width: 100%;
+            max-width: 1500px; 
+            margin: 0 auto; 
+            box-sizing: border-box; 
+        }
+        .container_table button{
+            grid-column: span 2; /* El botón ocupa todo el ancho */
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            justify-self: center;
+        }
+
+        .container_table button:hover{
+            background-color: #004494;
+        }
+
+        table {
+        width: 100%;
+        border-collapse: collapse; /* Elimina los espacios entre bordes */
+        margin: 20px 0;
+        font-size: 16px;
+        text-align: left;
+    }
+
+    thead {
+        background-color: #f4f4f4; /* Color de fondo del encabezado */
+    }
+
+    th, td {
+        border: 1px solid #ddd; /* Bordes de las celdas */
+        padding: 12px 15px; /* Espaciado interno */
+    }
+
+    th {
+        font-weight: bold;
+        text-transform: uppercase; /* Mayúsculas en el encabezado */
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9; /* Color alternado para filas pares */
+    }
+
+    tbody tr:hover {
+        background-color: #f1f1f1; /* Color al pasar el cursor */
+    }
+
+    </style>
+  </head>
+<body>
+    <header>
+        <h1>Software de Facturación</h1>
+        <nav class="navegacion">
+          <ul><li><a href="./index.html" class="navegacion_crear_factura">Crear Facturas</a></li></ul>
+        </nav>
+        </header>
+        <h2>Filtrar y Descargar Facturas</h2>
+
+        <main>
+            <form class="container_buscador_factura" id="formFiltro">
+                <div class="container_numero_factura">
+                    <label for="numero" class="numero_factura">Número</label>
+                    <input type="search" name="numero" id="numero" placeholder="Ej: SETP990000203">
+                </div>
+                <div class="container_nombre_cliente">
+                    <label for="nombre" class="nombre_cliente">Nombre</label>
+                    <input type="search" name="nombre" id="nombre" placeholder="Ej: Jeider Silgado">
+                </div>
+                <div class="container_identificacion">
+                    <label for="identificacion" class="identificacion">Identificación</label>
+                    <input type="search" name="identificacion" id="identificacion" placeholder="Ej: 123456789">
+                </div>
+                <div class="container_codigo_referencia">
+                    <label for="codigo_referencia" class="codigo_referencia">Codigo Referencia</label>
+                    <input type="search" name="codigo_referencia" id="codigo_referencia" placeholder="Ej: 12345931AT">
+                </div>
+                <div class="container_numero_prefijo">
+                    <label for="numero_prefijo" class="numero_prefijo">Numero Prefijo</label>
+                    <input type="search" name="numero_prefijo" id="numero_prefijo" placeholder="Ej: 123456789">
+                </div>
+                <div class="container_estado">
+                    <label for="estado" class="estado">Estado</label>
+                    <select name="estado" id="estado" class="select">
+                        <option value="">Seleccionar Opción</option>
+                        <option value="0">Pendiente</option>
+                        <option value="1">Validada</option>
+                    </select>
+                </div>
+                <button type="submit" id="ver_facturas">Buscar</button>
+            </form>
+
+            <div class="container_table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Número
+                            </th>
+                            <th>
+                                Cliente
+                            </th>
+                            <th>
+                                Identification
+                            </th>
+                            <th>
+                                Estado
+                            </th>
+                            <th>
+                                Total
+                            </th>
+                            <th>
+                                Codigo ref
+                            </th>
+                            <th>
+                                Creado
+                            </th>
+                            <th>
+                                Descargar
+                            </th>
+                            <th>
+                                Ver
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="facturas_list">
+                        
+                    </tbody>
+                </table>
+            </div>
+
+            
+        </main>
+
+        <section class="modal">
+            <div class="modal__container">
+
+            </div>
+            
+        </section>
+        
+        <script type="module" src="/src/main.js"></script>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+
+</body>
+</html>

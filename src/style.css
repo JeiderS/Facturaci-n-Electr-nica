@@ -1,0 +1,308 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-size: 20px;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  background-color: #3631ce;
+  padding: 20px;
+  margin-bottom: 20px; 
+}
+
+.navegacion ul {
+  display: flex; 
+  list-style: none; 
+  margin: 0px; 
+  margin-right: 40px;
+  padding: 15px; 
+  background-color: #80ed99;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navegacion ul:hover{
+  background-color: #57cc99;
+}
+
+
+.navegacion .navegacion_crear_factura{
+  color: white; 
+  text-decoration: none; 
+  font-size: 20px; 
+}
+
+h1{
+  color: white;
+}
+
+
+
+
+/* Contenedor principal */
+.container_form {
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  padding: 100px;  
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto; 
+  box-sizing: border-box; 
+}
+.informacion_factura{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 columnas de igual ancho */
+  gap: 16px; /* Espacio entre filas y columnas */
+  margin-bottom: 30px;
+  border: none;
+  
+}
+.datos_cliente{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 columnas de igual ancho */
+  gap: 16px; /* Espacio entre filas y columnas */
+  margin-bottom: 30px;
+  border: none;
+}
+
+.informacion_producto{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 4 columnas de igual ancho */
+  gap: 16px; /* Espacio entre filas y columnas */
+  margin-bottom: 30px;
+  border: none;
+}
+
+.retenciones_impuestos{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual ancho */
+  gap: 16px; /* Espacio entre filas y columnas */
+  margin-bottom: 30px;
+  border: none;
+}
+
+
+fieldset div {
+  display: flex;
+  flex-direction: column; /* Asegura que el label esté arriba del input */
+}
+label {
+  margin-bottom: 8px; /* Espacio entre el label y el input */
+}
+
+legend{
+  margin-top: 50px; 
+}
+
+.container_table{
+  border: 3px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;  
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto; 
+  box-sizing: border-box; 
+}
+.container_table button{
+  grid-column: span 2; /* El botón ocupa todo el ancho */
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  justify-self: center;
+}
+
+.container_table button:hover{
+  background-color: #004494;
+}
+
+table {
+width: 100%;
+border-collapse: collapse; /* Elimina los espacios entre bordes */
+margin: 20px 0;
+font-size: 16px;
+text-align: left;
+}
+
+thead {
+background-color: #f4f4f4; /* Color de fondo del encabezado */
+}
+
+th, td {
+border: 1px solid #ddd; /* Bordes de las celdas */
+padding: 12px 15px; /* Espaciado interno */
+}
+
+th {
+font-weight: bold;
+text-transform: uppercase; /* Mayúsculas en el encabezado */
+}
+
+tbody tr:nth-child(even) {
+background-color: #f9f9f9; /* Color alternado para filas pares */
+}
+
+tbody tr:hover {
+background-color: #f1f1f1; /* Color al pasar el cursor */
+}
+
+
+/* estilos ventana modal */
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #111111bd;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .6s .9s;
+  --transform: translateY(-100vh);
+  --transition: transform .8s;
+}
+
+.modal--show{
+  opacity: 1;
+  pointer-events: unset;
+  transition: opacity .6s;
+  --transform: translateY(0);
+  --transition: transform .8s .8s;
+}
+
+.modal__container{
+  margin: auto;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90%;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 3em 2.5em;
+  display: grid;
+  gap: 1em;
+  place-items: center;
+  grid-auto-columns: 100%;
+  transform: var(--transform);
+  transition:var(--transition);
+}
+
+.modal__title{
+  font-size: 2.5rem;
+}
+
+.modal__paragraph{
+  margin-bottom: 10px;
+}
+
+.modal__img{
+  width: 90%;
+  max-width: 300px;
+}
+
+.modal__close{
+  text-decoration: none;
+  color: #fff;
+  background-color: #80ed99;
+  padding: 1em 3em;
+  border: 1px solid ;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 300;
+  transition: background-color .3s;
+}
+
+.modal__close:hover{
+  color: #80ed99;
+  background-color: #fff;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+  fieldset {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+  }
+  #modal__container{
+    padding: 2em 1.5em;
+}
+}
+
+@media (max-width: 480px) {
+  fieldset {
+    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+  }
+}
+
+footer{
+  background-color: #3631ce;
+  color: white;
+  padding: 100px;
+  text-align: center;
+  margin-top: 20px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilo del legend */
+legend {
+  font-size: 20px;
+  text-align: center; /* Centrar el título */
+  margin-bottom: 20px; /* Espacio debajo del legend */
+}
+
+/* Inputs dentro del formulario */
+input {
+  border-radius: 5px;
+  padding: 20px; /* Reducir el padding para que se ajusten mejor */
+  margin: 0; /* Espacio arriba y abajo */
+   /* Asegura que el input ocupe todo el ancho del contenedor */
+  box-sizing: border-box; /* Incluir padding y border en el tamaño */
+}
+
+
+select{
+  border-radius: 5px;
+  padding: 20px; /* Reducir el padding para que se ajusten mejor */
+  margin: 0; /* Espacio arriba y abajo */
+   /* Asegura que el input ocupe todo el ancho del contenedor */
+  box-sizing: border-box; /* Incluir padding y border en el tamaño */
+}
+
+/* Botón */
+.button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  width: 100%; /* Hacer que el botón ocupe todo el ancho disponible */
+  box-sizing: border-box; /* Incluir padding y border en el tamaño */
+}

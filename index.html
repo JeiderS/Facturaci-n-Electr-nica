@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css">
+    <title>Vite App</title>
+  </head>
+  <body>
+    <header>
+      <h1>Software de Facturación</h1>
+      <nav class="navegacion">
+        <ul>
+          <li>
+            <a href="./ver_facturas.html" class="navegacion_crear_factura">Ver Facturas</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Codifo del formulario -->
+    
+    <div class="container_form">
+      <p>Formulario De Facturacion Electronica</p>
+      <form action="post" id="Facturacion" autocomplete="on" action="https://api-sandbox.factus.com.co/v1/bills/validate"  enctype="application/json">
+        <fieldset class="informacion_factura">
+          <legend >Informacion de factura</legend>
+          <div>
+            <label for="rango_Numeracion">Rango de numeracion</label>
+            <select name="rango_Numeracion" id="rango_Numeracion">
+              <option value="">Agregar rango de numeracion</option>
+              <option value="8">Factura de Venta</option>
+              <option value="9">Nota Crédito</option>
+              <option value="10">Nota Débito</option>
+            </select>
+          </div>
+          <div>
+            <label for="código_Referencia">Código referencia</label>
+            <input type="text" name="código_Referencia" id="código_Referencia" required placeholder="Código referencia">
+          </div>
+          <div>
+            <label for="observación">Observación</label>
+            <input type="text" name="observación" id="observación" required placeholder="Observación">
+          </div>
+          <div>
+            <label for="código_método_pago">Metodo de pago</label>
+            <select name="código_método_pago" id="código_método_pago">
+              <option value="10">Efectivo</option>
+              <option value="42">Consignación</option>
+              <option value="20">Cheque</option>
+              <option value="46">Transferencia Débito Interbancario</option>
+              <option value="47">Transferencia</option>
+              <option value="71">Bonos</option>
+              <option value="72">Vales</option>
+              <option value="ZZZ">Otro*</option>
+              <option value="1">Medio de pago no definido</option>
+              <option value="49">Tarjeta Débito</option>
+              <option value="3">Débito ACH</option>
+              <option value="25">Cheque certificado</option>
+              <option value="26">Cheque Local</option>
+              <option value="24">Nota cambiaria esperando aceptación</option>
+              <option value="64">Nota promisoria firmada por el banco</option>
+              <option value="65">Nota promisoria firmada por un banco avalada por otro banco</option>
+              <option value="66">Nota promisoria firmada</option>
+              <option value="67">Nota promisoria firmada por un tercero avalada por un banco</option>
+              <option value="2">Crédito ACH</option>
+              <option value="95">Giro formato abierto</option>
+              <option value="13">Crédito Ahorro</option>
+              <option value="14">Débito Ahorro</option>
+              <option value="39">Crédito Intercambio Corporativo (CTX)</option>
+              <option value="4">Reversión débito de demanda ACH</option>
+              <option value="5">Reversión crédito de demanda ACH</option>
+              <option value="6">Crédito de demanda ACH</option>
+              <option value="7">Débito de demanda ACH</option>
+              <option value="9">Clearing Nacional o Regional</option>
+              <option value="11">Reversión Crédito Ahorro</option>
+              <option value="12">Reversión Débito Ahorro</option>
+              <option value="18">Desembolso (CCD) débito</option>
+              <option value="19">Crédito Pago negocio corporativo (CTP)</option>
+              <option value="21">Proyecto bancario</option>
+              <option value="22">Proyecto bancario certificado</option>
+              <option value="27">Débito Pago Negocio Corporativo (CTP)</option>
+              <option value="28">Crédito Negocio Intercambio Corporativo (CTX)</option>
+              <option value="29">Débito Negocio Intercambio Corporativo (CTX)</option>
+              <option value="30">Transferencia Crédito</option>
+              <option value="31">Transferencia Débito</option>
+              <option value="32">Desembolso Crédito plus (CCD+)</option>
+              <option value="33">Desembolso Débito plus (CCD+)</option>
+              <option value="34">Pago y depósito pre acordado (PPD)</option>
+              <option value="35">Desembolso Crédito (CCD)</option>
+              <option value="36">Desembolso Débito (CCD)</option>
+              <option value="48">Tarjeta Crédito</option>
+              <option value="44">Nota cambiaria</option>
+              <option value="23">Cheque bancario de gerencia</option>
+              <option value="61">Nota promisoria firmada por el acreedor</option>
+              <option value="62">Nota promisoria firmada por el acreedor, avalada por el banco</option>
+              <option value="63">Nota promisoria firmada por el acreedor, avalada por un tercero</option>
+              <option value="60">Nota promisoria</option>
+              <option value="96">Método de pago solicitado no usado</option>
+              <option value="91">Nota bancaria transferible</option>
+              <option value="92">Cheque local transferible</option>
+              <option value="93">Giro referenciado</option>
+              <option value="94">Giro urgente</option>
+              <option value="40">Débito Intercambio Corporativo (CTX)</option>
+              <option value="41">Desembolso Crédito plus (CCD+)</option>
+              <option value="43">Desembolso Débito plus (CCD+)</option>
+              <option value="45">Transferencia Crédito Bancario</option>
+              <option value="50">Postgiro</option>
+              <option value="51">Telex estándar bancario</option>
+              <option value="52">Pago comercial urgente</option>
+              <option value="53">Pago Tesorería Urgente</option>
+              <option value="15">Bookentry Crédito</option>
+              <option value="16">Bookentry Débito</option>
+              <option value="17">Desembolso Crédito (CCD)</option>
+              <option value="70">Retiro de nota por el acreedor</option>
+              <option value="74">Retiro de nota por el acreedor sobre un banco</option>
+              <option value="75">Retiro de nota por el acreedor, avalada por otro banco</option>
+              <option value="76">Retiro de nota por el acreedor, sobre un banco avalada por un tercero</option>
+              <option value="77">Retiro de una nota por el acreedor sobre un tercero</option>
+              <option value="78">Retiro de una nota por el acreedor sobre un tercero avalada por un banco</option>
+              <option value="37">Pago Negocio Corporativo Ahorros Crédito (CTP)</option>
+              <option value="38">Pago Negocio Corporativo Ahorros Débito (CTP)</option>
+              <option value="97">Clearing entre partners</option>
+          </select>
+        </div>
+      </fieldset>
+      
+      <fieldset class="datos_cliente">
+        <legend>Datos del cliente</legend>
+      
+        <div>
+          <label for="identificación">Identificación</label>
+          <input type="number" name="identificación" id="identificación" value="123456789" required placeholder="Identificación">
+        </div>
+      
+        <div>
+          <label for="dv">Digito de verificación</label>
+          <input type="number" name="dv" id="dv" value="3" required placeholder="Digito de verificación">
+        </div>
+      
+        <div>
+          <label for="compañía">Compañía</label>
+          <input type="text" name="compañía" id="compañía" placeholder="Nombre compañía">
+        </div>
+      
+        <div>
+          <label for="nombre_comercial">Nombre comercial</label>
+          <input type="text" name="nombre_comercial" id="nombre_comercial" placeholder="Nombre comercial">
+        </div>
+      
+        <div>
+          <label for="nombres">Nombres</label>
+          <input type="text" name="nombres" id="nombres" placeholder="Nombres">
+        </div>
+      
+        <div>
+          <label for="direccion">DIRECCIÓN</label>
+          <input type="text" name="direccion" id="direccion" placeholder="Dirección">
+        </div>
+      
+        <div>
+          <label for="correo_electrónico">Correo electrónico</label>
+          <input type="email" name="correo_electrónico" id="correo_electrónico" required placeholder="Correo electrónico">
+        </div>
+      
+        <div>
+          <label for="teléfono">Teléfono</label>
+          <input type="tel" name="teléfono" id="teléfono" required placeholder="Teléfono">
+        </div>
+      
+        <div>
+          <label for="id_organización_legal">Tipo de organización</label>
+          <select name="id_organización_legal" id="id_organización_legal">
+            <option value="1">persona natural</option>
+            <option value="2">persona juridica</option>
+          </select>
+          <!-- <input type="number" name="id_organización_legal" id="id_organización_legal" value="2" placeholder="Tipo de organización"> -->
+        </div>
+      
+        <div>
+          <label for="tributo_id">Tributo</label>
+          <input type="number" name="tributo_id" id="tributo_id" value="21" placeholder="Tributto aplicado">
+          
+        </div>
+      
+        <div>
+          <label for="identificación_documento_id">Tipo de identificación</label>
+          <select name="identificación_documento_id" id="identificación_documento_id">
+            <option value="1">Registro civil</option>
+            <option value="2">Tarjeta de identidad</option>
+            <option value="3">Cédula ciudadanía</option>
+            <option value="4">Tarjeta de extranjería</option>
+            <option value="5">Cédula de extranjería</option>
+            <option value="6">NIT</option>
+            <option value="7">Pasaporte</option>
+            <option value="8">Documento de identificación extranjero</option>
+            <option value="9">PEP</option>
+            <option value="10">NIT otro país</option>
+            <option value="11">NUIP *</option>
+          </select>
+          <!-- <input type="number" name="identificación_documento_id" id="identificación_documento_id" value="3" placeholder="Tipo de identificación"> -->
+        </div>
+      
+        <div>
+          <label for="municipio_id">Municipio</label>
+          <input type="number" name="municipio_id" id="municipio_id" value="980" placeholder="Municipio">
+        </div>
+      </fieldset>
+      
+      <fieldset class="informacion_producto">
+        <legend>Informacion del producto</legend>
+      
+        <div>
+          <label for="referencia_código">Codigo de referencia</label>
+          <input type="number" name="referencia_código" id="referencia_código" value="12345" placeholder="Codigo de referencia">
+        </div>
+      
+        <div>
+          <label for="nombre">Nombre del producto</label>
+          <input type="text" name="nombre" id="nombre" placeholder="Nombre del producto">
+        </div>
+      
+        <div>
+          <label for="cantidad">Cantidad</label>
+          <input type="number" name="cantidad" id="cantidad" value="1" placeholder="Cantidad">
+        </div>
+      
+        <div>
+          <label for="descuento">Descuento</label>
+          <input type="number" name="descuento" id="descuento" placeholder="Descuento">
+        </div>
+      
+        <div>
+          <label for="tasa_descuento">Tasa descuento</label>
+          <input type="number" name="tasa_descuento" id="tasa_descuento" value="0" placeholder="Tasa descuento">
+        </div>
+      
+        <div>
+          <label for="precio">Precio</label>
+          <input type="number" name="precio" id="precio" value="5000" placeholder="Precio">
+        </div>
+      
+        <div>
+          <label for="valor_descuento">valor del descuento</label>
+          <input type="number" name="valor_descuento" id="valor_descuento" value="5.00" placeholder="valor del descuento">
+        </div>
+      
+        <div>
+          <label for="id_medida_unidad">Unidad de medida</label>
+          <select name="id_medida_unidad" id="id_medida_unidad">
+            <option value="">Agregar unidad</option>
+            <option value="70">unidad</option>
+            <option value="414">kilogramo</option>
+            <option value="449">libra</option>
+            <option value="512">metro</option>
+            <option value="874">galón</option>
+          </select>
+          
+          <!-- <input type="number" name="id_medida_unidad" id="id_medida_unidad" value="70" placeholder="Unidad de medida"> -->
+        </div>
+      
+        <div>
+          <label for="id_código_estándar">Codigo para productos</label>
+          <select name="id_código_estándar" id="id_código_estándar">
+            <option value="">Agregar codigo estandar</option>
+            <option value="1">Estándar de adopción del contribuyente</option>
+            <option value="2">UNSPSC</option>
+            <option value="3">Partida Arancelarias</option>
+            <option value="4">GTIN</option>
+          </select>
+          
+          <!-- <input type="number" name="id_código_estándar" id="id_código_estándar" value="1" placeholder="Codigo para productos"> -->
+        </div>
+      
+        <div>
+          <label for="está_excluido">Excluido de iva</label>
+          <input type="number" name="está_excluido" id="está_excluido" value="0" placeholder="Excluido de iva">
+        </div>
+      
+        <div>
+          <label for="tributto_aplicado">Tributto aplicado</label>
+          <select name="tributto_aplicado" id="tributto_aplicado">
+            <option value="">selecionar opcion</option>
+            <option value="1">Impuesto sobre la Ventas (IVA)</option>
+            <option value="2">Impuesto al Consumo Departamental Nominal (IC)</option>
+            <option value="3">Impuesto de Industria, Comercio y Aviso (ICA)</option>
+            <option value="4">Impuesto Nacional al Consumo (INC)</option>
+            <option value="5">Retención sobre el IVA (ReteIVA)</option>
+            <option value="6">Retención sobre renta (ReteRenta)</option>
+            <option value="7">Retención sobre el ICA (ReteICA)</option>
+            <option value="8">Impuesto al Consumo Departamental Porcentual (IC Porcentual)</option>
+            <option value="9">Cuota de Fomento Hortifrutícula (FtoHorticultura)</option>
+            <option value="10">Impuesto de Timbre (Timbre)</option>
+            <option value="11">Impuesto Nacional al Consumo de Bolsa Plástica (INC Bolsas)</option>
+            <option value="12">Impuesto Nacional del Carbono (INCarbono)</option>
+            <option value="13">Impuesto Nacional del Carbono (INCarbono)</option>
+            <option value="14">Impuesto Nacional a los Combustibles (INCombustibles)</option>
+            <option value="15">Sobretasa a los combustibles (Sobretasa Combustibles)</option>
+            <option value="16">Contribución minoristas (Combustibles) (Sordicom)</option>
+            <option value="17">Impuesto al Consumo de Datos (IC Datos)</option>
+          </select>
+          
+        </div>
+      </fieldset>
+
+      <fieldset class="retenciones_impuestos">
+        <legend>Retenciones de impuestos</legend>
+      
+        <div>
+          <label for="codigo">Código</label>
+          <select name="codigo" id="codigo">
+            <option value="">selecionar opcion</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="30">30</option>
+          </select>
+          <!-- <input type="number" name="codigo" id="codigo" value="06" placeholder="Código"> -->
+        </div>
+      
+        <div>
+          <label for="tasa_de_retención_impositiva">Tasa de retención impositiva</label>
+          <input type="number" name="tasa_de_retención_impositiva" id="tasa_de_retención_impositiva" placeholder="Tasa de retención impositiva">
+        </div>
+      </fieldset>
+
+      <div id="tabla_container">
+
+      </div>
+
+      <button class="button" type="submit" id="agregarProducto">Agregar Producto</button>
+      
+
+      <button class="button" type="submit" id="enviar">Crear Factura</button>
+
+      <div class="container_notificacion">
+        <!-- <p id="notificacion">Documento con el código de referencia fact0022025 registrado y validado con éxito</p> -->
+      </div>
+
+    </form>
+  </div>
+
+
+  <pre id="texto"></pre>
+  
+  
+    
+
+
+
+
+<footer>
+  &lt;&lt;&lt; &copy;JeiderSilgado &gt;&gt;&gt;
+</footer>
+
+
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
